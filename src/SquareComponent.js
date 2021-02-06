@@ -1,9 +1,12 @@
 import React from 'react';
 
 
-function SquareComponent() {
+function SquareComponent(props) {
+    const classes = props.className ? `${props.className} square` : 'square';
     return (
-    <span>X</span>
+    <span className={classes}>
+        X
+    </span>
     );
 }
 
