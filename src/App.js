@@ -6,9 +6,13 @@ const initialState = ["", "", "", "", "", "","", "", ""];
 
 function App() {
     const [gameState, setGameState] = useState(initialState);
+    const [isX, setIsX] = useState(false);
 
     const onSquareClick = (index) => {
-        
+        let strings = Array.from(gameState);
+        strings[index] = isX ? "X" : "O";
+        setGameState(strings);
+        setIsX(!isX);
     }
 
 
