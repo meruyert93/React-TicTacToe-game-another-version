@@ -1,6 +1,6 @@
 import React from 'react';
 import SquareComponent from './SquareComponent';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const initialState = ["", "", "", "", "", "","", "", ""];
 
@@ -15,6 +15,34 @@ function App() {
         setIsX(!isX);
     }
 
+    useEffect(() => {
+        const winner = checkWinner();
+        if (winner) {
+            alert(`Yeah! ${winner} has won the game!`);
+            setGameState(initialState);
+        }
+    }, [gameState])
+
+    const checkWinner = () => {
+        const lines = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6],
+        ];
+        console.log('Class: App, Function: checkWinner ==', gameState[0], gameState[1], gameState[2]);
+        for (let i = 0; i < lines.length; i++) {
+            const [a, b, c] = lines[i];
+            if (gameState[a] && gameState[a] === gameState[b] && gameState[a] === gameState[c]) {
+                return gameState[a];
+            }
+        }
+        return null;
+    }
 
     return (
         <div className="app-header">
@@ -34,7 +62,7 @@ function App() {
                 <SquareComponent className="b-right" state={gameState[7]} onClick={() => onSquareClick(7)}/>
                 <SquareComponent state={gameState[8]} onClick={() => onSquareClick(8)}/>
             </div>
-            <button className="clear-button">Clear Game</button>
+            <button className="clear-button" onClick={() => setGameState(initialState)}>Clear Game</button>
             <p>developed by Meruyert Karim</p>
         </div>
     );
