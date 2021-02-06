@@ -20,6 +20,8 @@ function App() {
                 <SquareComponent className="b-right"/>
                 <SquareComponent/>
             </div>
+            <button className="clear-button">Clear Game</button>
+            <p>developed by Meruyert Karim</p>
         </div>
     );
 }

@@ -68,3 +68,8 @@ code {
 .b-right {
     border-right: 15px solid #1CDBF5;
 }
+
+.clear-button {
+    width: max-content;
+    margin: 40px auto 10px auto;
+}
